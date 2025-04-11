@@ -1,28 +1,42 @@
 #!/bin/bash
 
-# Root school folder
-SCHOOL_DIR=~/writedoc
+# Function to display help message
+usage() {
+    echo "Usage: $0 [-d DIRECTORY] FILENAME"
+    echo "  -d, --directory    Directory where the file will be created (default: current directory)"
+    echo "  FILENAME           Name of the markdown file (without extension)"
+    exit 0
+}
 
-# Get subject and filename from the arguments
-SUBJECT="$1"
-FILENAME="$2"
+# Default directory to current working directory
+DIRECTORY="."
 
-# Check for arguments
-if [[ -z "$SUBJECT" || -z "$FILENAME" ]]; then
-    echo "Usage: writedoc <subject> <filename>"
-    exit 1
+# Parse command line options
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        -d|--directory) DIRECTORY="$2"; shift ;;  # Set directory to the next argument
+        -h|--help) usage ;;  # Show help and exit
+        *) FILENAME="$1" ;;  # The first non-option argument will be the filename
+    esac
+    shift
+done
+
+# Check if FILENAME is provided
+if [ -z "$FILENAME" ]; then
+    echo "Error: FILENAME is required."
+    usage
 fi
 
-# Build the full path
-TARGET_DIR="$SCHOOL_DIR/$SUBJECT"
-TARGET_FILE="$TARGET_DIR/$FILENAME.md"
+# Make sure the directory exists
+if [ ! -d "$DIRECTORY" ]; then
+    echo "Directory does not exist. Creating it now..."
+    mkdir -p "$DIRECTORY"
+fi
 
-# Make the directory if it doesn't exist
-mkdir -p "$TARGET_DIR"
+# Create the markdown file
+FILEPATH="$DIRECTORY/$FILENAME.md"
+echo "# $FILENAME" > "$FILEPATH"
 
-# Create the file if it doesn't exist
-touch "$TARGET_FILE"
-
-# Open it with nvim
-nvim "$TARGET_FILE"
+# Open the file with nvim
+nvim "$FILEPATH"
 
