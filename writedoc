@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Root school folder
-SCHOOL_DIR=~/school
+SCHOOL_DIR=~/writedoc
 
 # Get subject and filename from the arguments
 SUBJECT="$1"
