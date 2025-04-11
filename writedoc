@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Root school folder
+SCHOOL_DIR=~/school
+
+# Get subject and filename from the arguments
+SUBJECT="$1"
+FILENAME="$2"
+
+# Check for arguments
+if [[ -z "$SUBJECT" || -z "$FILENAME" ]]; then
+    echo "Usage: writedoc <subject> <filename>"
+    exit 1
+fi
+
+# Build the full path
+TARGET_DIR="$SCHOOL_DIR/$SUBJECT"
+TARGET_FILE="$TARGET_DIR/$FILENAME.md"
+
+# Make the directory if it doesn't exist
+mkdir -p "$TARGET_DIR"
+
+# Create the file if it doesn't exist
+touch "$TARGET_FILE"
+
+# Open it with nvim
+nvim "$TARGET_FILE"
+
