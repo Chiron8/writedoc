@@ -35,8 +35,10 @@ fi
 
 # Create the markdown file
 FILEPATH="$DIRECTORY/$FILENAME.md"
+echo "Creating File"
 echo "# $FILENAME" > "$FILEPATH"
 
 # Open the file with nvim
+echo "Opening file"
 nvim "$FILEPATH"
 
