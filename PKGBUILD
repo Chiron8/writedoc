@@ -2,7 +2,7 @@
 # This is my first package!!!!
 
 pkgname=writedoc
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A fast way of creating and editing notes using neovim without defining a file path"
 arch=('any')
