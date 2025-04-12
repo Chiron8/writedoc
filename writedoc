@@ -2,14 +2,14 @@
 
 # Function to display help message
 usage() {
-    echo "Usage: $0 [-d DIRECTORY] FILENAME"
+    echo "Usage: writedoc [-d DIRECTORY] FILENAME"
     echo "  -d, --directory    Directory where the file will be created (default: current directory)"
     echo "  FILENAME           Name of the markdown file (without extension)"
     exit 0
 }
 
 # Default directory to current working directory
-DIRECTORY="."
+DIRECTORY="./Documents"
 
 # Parse command line options
 while [[ "$#" -gt 0 ]]; do
