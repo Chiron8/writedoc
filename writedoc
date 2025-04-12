@@ -3,43 +3,75 @@
 
 # Function to display help message
 usage() {
-    echo "Usage: writedoc [-d DIRECTORY] FILENAME"
-    echo "  -d, --directory    Directory where the file will be created (default: current directory)"
-    echo "  FILENAME           Name of the markdown file (without extension)"
-    exit 0
+    cat <<EOF
+Usage: writedoc [-d DIRECTORY] [-t FILETYPE] FILENAME
+
+  -d, --directory    Directory where the file will be created (default: ./Documents)
+  -t, --filetype     File type of the file (default: .md)
+  
+  FILENAME           Name of the markdown file (without extension)
+EOF
+    exit 1
 }
 
-# Default directory to current working directory
+# Default directory and filetype
 DIRECTORY="./Documents"
+FILETYPE=".md"
 
-# Parse command line options
-while [[ "$#" -gt 0 ]]; do
-    case $1 in
-        -d|--directory) DIRECTORY="$2"; shift ;;  # Set directory to the next argument
-        -h|--help) usage ;;  # Show help and exit
-        *) FILENAME="$1" ;;  # The first non-option argument will be the filename
+# Parse flags with getopts using a leading colon to catch missing arguments
+while getopts ":d:t:" OPTION; do
+    case "$OPTION" in
+        d)
+            DIRECTORY="$OPTARG"
+            ;;
+        t)
+            FILETYPE="$OPTARG"
+            ;;
+        :)  # Handle missing arguments
+            echo "Error: Option -$OPTARG requires an argument." >&2
+            usage
+            ;;
+        \?) # Handle invalid options
+            echo "Error: Invalid option -$OPTARG" >&2
+            usage
+            ;;
     esac
-    shift
 done
 
-# Check if FILENAME is provided
-if [ -z "$FILENAME" ]; then
-    echo "Error: FILENAME is required."
+# Shift the processed options so that $1 is now the FILENAME
+shift $((OPTIND - 1))
+
+# Check if FILENAME (the required positional argument) is provided
+if [ $# -eq 0 ]; then
+    echo "Error: FILENAME is required." >&2
     usage
 fi
 
-# Make sure the directory exists
+FILENAME="$1"
+
+# Make sure the directory exists and create it if it doesn't
 if [ ! -d "$DIRECTORY" ]; then
     echo "Directory does not exist. Creating it now..."
     mkdir -p "$DIRECTORY"
 fi
 
-# Create the markdown file
-FILEPATH="$DIRECTORY/$FILENAME.md"
-echo "Creating File..."
+# Ensure DIRECTORY ends with a slash
+DIRECTORY="${DIRECTORY%/}/"
+
+# Construct the file path
+FILEPATH="$DIRECTORY$FILENAME$FILETYPE"
+
+# Create the markdown file with a simple title as content
+echo "Creating file at: $FILEPATH"
 echo "# $FILENAME" > "$FILEPATH"
 
-# Open the file with nvim
-echo "Opening file..."
+# Check if nvim is installed
+if ! command -v nvim &> /dev/null; then
+    echo "Neovim (nvim) is not installed. Please install it to continue."
+    exit 1
+fi
+
+# Open the file in Neovim
+echo "Opening file with Neovim..."
 nvim "$FILEPATH"
 
