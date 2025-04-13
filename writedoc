@@ -4,28 +4,63 @@
 # Function to display help message
 usage() {
     cat <<EOF
-Usage: writedoc [-d DIRECTORY] [-t FILETYPE] FILENAME
+Usage: writedoc [options] FILENAME
 
-  -d, --directory    Directory where the file will be created (default: ./Documents)
-  -t, --filetype     File type of the file (default: .md)
+  OPTIONS:
+  -c          Change the default values of directory and/or file type
+              use with either -d or -t to change the defaults
+              FILENAME is not required and will be ignored
   
-  FILENAME           Name of the markdown file (without extension)
+  -r          Reset all values back to the default setting
+
+  -d          Directory where the file will be created (default: ./Documents)
+  
+  -t          File type of the file (default: .md)
+  
+  FILENAME    Name of the markdown file (without extension)
 EOF
     exit 1
 }
 
-# Default directory and filetype
-DIRECTORY="./Documents"
-FILETYPE=".md"
+# Get directory and file type
+CHANGE=0
 
-# Parse flags with getopts using a leading colon to catch missing arguments
-while getopts ":d:t:" OPTION; do
+dirInput="directory.txt"
+while IFS= read -r line
+do
+    DIRECTORY="$line"
+done < "$dirInput"
+
+ftInput="ft.txt"
+while IFS= read -r line
+do
+    FILETYPE="$line"
+done < "$ftInput"
+
+# Parse flags with getopts
+while getopts ":crd:t:" OPTION; do
     case "$OPTION" in
-        d)
-            DIRECTORY="$OPTARG"
+        c) # Change defaults flag
+            CHANGE=1
             ;;
-        t)
+        r) # Reset defaults
+            echo "./Documents/" > directory.txt
+            echo ".md" > ft.txt
+            exit 0
+            ;;
+        d) # Directory
+            DIRECTORY="$OPTARG"
+            if [ $CHANGE -eq 1 ]; then
+                echo $DIRECTORY > directory.txt
+                exit 0
+            fi
+            ;;
+        t) # File type
             FILETYPE="$OPTARG"
+            if [ $CHANGE -eq 1 ]; then
+                echo $DIRECTORY > ft.txt
+                exit 0
+            fi
             ;;
         :)  # Handle missing arguments
             echo "Error: Option -$OPTARG requires an argument." >&2
@@ -41,7 +76,7 @@ done
 # Shift the processed options so that $1 is now the FILENAME
 shift $((OPTIND - 1))
 
-# Check if FILENAME (the required positional argument) is provided
+# Check if FILENAME is provided
 if [ $# -eq 0 ]; then
     echo "Error: FILENAME is required." >&2
     usage
@@ -49,7 +84,7 @@ fi
 
 FILENAME="$1"
 
-# Make sure the directory exists and create it if it doesn't
+# Make sure the directory exists - create if not
 if [ ! -d "$DIRECTORY" ]; then
     echo "Directory does not exist. Creating it now..."
     mkdir -p "$DIRECTORY"
@@ -65,13 +100,6 @@ FILEPATH="$DIRECTORY$FILENAME$FILETYPE"
 echo "Creating file at: $FILEPATH"
 echo "# $FILENAME" > "$FILEPATH"
 
-# Check if nvim is installed
-if ! command -v nvim &> /dev/null; then
-    echo "Neovim (nvim) is not installed. Please install it to continue."
-    exit 1
-fi
-
 # Open the file in Neovim
 echo "Opening file with Neovim..."
 nvim "$FILEPATH"
-
