@@ -2,15 +2,37 @@
 A simple package to make it easier and faster to create markdown files.
 
 ## Usage
-writedoc currently takes to inputs: `subject directory` and `file name`
+`writedoc <options> <filename>`
 
-On Linux run this command to create a new file (and directory if it doesn't already exist):
+The current options are:
+- -d             Define a custom directory to create the new file
+- -t             Define a custom file type for the new file
+- -c             Use when you want to change the default value(s) for the directory and/or file type
+                 make sure to use it alongside -d or -t
+                 FILENAME is not required when using this flag
+- -r             Reset all values back to their defaults 
+                 FILENAME is not required when using this flag
 
-`writedoc <directory> <filename>`
+The default value for the directory is `./Documents/`
+The default value for the file type is `.md`
 
-For example, if I was to create a file called matrices-001 in a folder called 'maths', the resulting command would be:
+### Examples
+If I were to create a file called `work` in the default directory with the default file type, the resulting command would be:
 
-`writedoc maths matrices-001`
+`writedoc work`
+
+If I wanted to create a file called `work` with the directory `~/ImportantFiles/` with the file type`.csv`, the resulting command would be:
+
+`writedoc -d ~/ImportantFiles -t .csv work`
+
+If I wanted to change the default value for the directory to be `~/ImportantFiles/` and the default value for the file type to be `.csv`, the resulting command would be:
+
+`writedoc -c -d ~/ImportantFiles -t .csv`
+
+If I wanted to reset the default values, the resulting command would be:
+
+`writedoc -r`
+
 
 ## Installation
 ### Automatic Install
