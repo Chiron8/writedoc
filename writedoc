@@ -23,15 +23,17 @@ EOF
 }
 
 # Get directory and file type
+DATA_DIR="/usr/share/writedoc"
 CHANGE=0
 
-dirInput="directory.txt"
+dirInput="$DATA_DIR/directory.txt"
+
 while IFS= read -r line
 do
     DIRECTORY="$line"
 done < "$dirInput"
 
-ftInput="ft.txt"
+ftInput="$DATA_DIR/ft.txt"
 while IFS= read -r line
 do
     FILETYPE="$line"
