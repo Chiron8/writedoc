@@ -3,13 +3,13 @@
 
 pkgname=writedoc
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast way of creating and editing notes using neovim without defining a file path"
 arch=('any')
 url="https://github.com/Chiron8/writedoc"
 license=('MIT')
 depends=('nvim' 'bash')
-source=("$pkgname")
+source=("$pkgname", "directory.txt", "ft.txt")
 sha256sums=('SKIP')
 
 package() {
