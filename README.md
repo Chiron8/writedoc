@@ -12,6 +12,7 @@ The current options are:
                  FILENAME is not required when using this flag
 - -r             Reset all values back to their defaults 
                  FILENAME is not required when using this flag
+- -p             Use the default directory PLUS another folder
 
 The default value for the directory is `./Documents/`
 The default value for the file type is `.md`
@@ -32,6 +33,10 @@ If I wanted to change the default value for the directory to be `~/ImportantFile
 If I wanted to reset the default values, the resulting command would be:
 
 `writedoc -r`
+
+If I wanted to created a file called `work` in the default directory plus a folder called `Important` (i.e the directory would be `~/DEFAULT/Important/`), the resulting command would be:
+
+`writedoc -p Important work`
 
 
 ## Installation

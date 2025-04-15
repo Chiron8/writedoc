@@ -10,6 +10,9 @@ Usage: writedoc [options] FILENAME
   -c          Change the default values of directory and/or file type
               use with either -d or -t to change the defaults
               FILENAME is not required and will be ignored
+  -p          Use another folder in the default directory
+              e.g. writedoc -p ExampleFolder ExampleFile =
+              ~/Default/ExampleFolder/ExampleFile.md
   
   -r          Reset all values back to the default setting
 
@@ -22,9 +25,12 @@ EOF
     exit 1
 }
 
+CHANGE=0
+PFLAG=0
+
 # Get directory and file type
 DATA_DIR="/usr/share/writedoc"
-CHANGE=0
+
 
 dirInput="$DATA_DIR/directory.txt"
 
@@ -40,10 +46,14 @@ do
 done < "$ftInput"
 
 # Parse flags with getopts
-while getopts ":crd:t:" OPTION; do
+while getopts ":cp:rd:t:" OPTION; do
     case "$OPTION" in
         c) # Change defaults flag
             CHANGE=1
+            ;;
+        p) # + Folder
+            PFLAG=1
+            DIRECTORY="$DIRECTORY/$OPTARG"
             ;;
         r) # Reset defaults
             echo "./Documents/" > directory.txt
