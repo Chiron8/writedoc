@@ -14,4 +14,6 @@ sha256sums=('SKIP')
 
 package() {
     install -Dm755 "$srcdir/writedoc" "$pkgdir/usr/bin/writedoc"
+    install -Dm644 "$srcdir/directory.txt" "$pkgdir/usr/share/$pkgname/directory.txt"
+    install -Dm644 "$srcdir/ft.txt" "$pkgdir/usr/share/$pkgname/ft.txt"
 }
