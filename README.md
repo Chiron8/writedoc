@@ -1,5 +1,5 @@
 # writedoc
-A simple package to make it easier and faster to create markdown files.
+A simple POSIX compliant package to make it easier and faster to create markdown files.
 
 ## Usage
 `writedoc <options> <filename>`

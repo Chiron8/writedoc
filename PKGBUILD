@@ -1,8 +1,8 @@
 # Maintainer: Chiron Horwood <chironathome@gmail.com>
 # This is my first package!!!!
-
+# POSIX compliant!
 pkgname=writedoc
-pkgver=1.2.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="A fast way of creating and editing notes using neovim without defining a file path"
 arch=('any')

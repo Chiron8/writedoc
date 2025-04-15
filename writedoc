@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # A fast way of creating and editing notes using neovim without defining a file path
 
 # Function to display help message

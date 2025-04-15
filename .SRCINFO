@@ -1,6 +1,6 @@
 pkgbase = writedoc
 	pkgdesc = A fast way of creating and editing notes using neovim without defining a file path
-	pkgver = 1.2.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/Chiron8/writedoc
 	arch = any
