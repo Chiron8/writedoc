@@ -53,7 +53,7 @@ while getopts ":cp:rd:t:" OPTION; do
             ;;
         p) # + Folder
             PFLAG=1
-            DIRECTORY="$DIRECTORY/$OPTARG"
+            DIRECTORY="$DIRECTORY$OPTARG"
             ;;
         r) # Reset defaults
             echo "./Documents/" > directory.txt
