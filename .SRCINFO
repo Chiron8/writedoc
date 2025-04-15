@@ -11,5 +11,7 @@ pkgbase = writedoc
 	source = directory.txt
 	source = ft.txt
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = writedoc

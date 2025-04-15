@@ -10,7 +10,7 @@ url="https://github.com/Chiron8/writedoc"
 license=('MIT')
 depends=('nvim' 'bash')
 source=("$pkgname" "directory.txt" "ft.txt")
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
     install -Dm755 "$srcdir/writedoc" "$pkgdir/usr/bin/writedoc"
