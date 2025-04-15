@@ -7,8 +7,8 @@ pkgbase = writedoc
 	license = MIT
 	depends = nvim
 	depends = bash
-	source = writedoc,
-	source = directory.txt,
+	source = writedoc
+	source = directory.txt
 	source = ft.txt
 	sha256sums = SKIP
 

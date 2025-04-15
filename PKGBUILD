@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/Chiron8/writedoc"
 license=('MIT')
 depends=('nvim' 'bash')
-source=("$pkgname", "directory.txt", "ft.txt")
+source=("$pkgname" "directory.txt" "ft.txt")
 sha256sums=('SKIP')
 
 package() {
