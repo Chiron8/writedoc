@@ -1,1 +1,1 @@
-./Documents/
+/home/chiron/Documents/School
