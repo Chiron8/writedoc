@@ -48,7 +48,9 @@ You can use your preferred AUR helper to intall writedoc:
 `yay -S writedoc`
 
 ### Manual Install
-Make sure you have the required prerequisites installed: `base-devel` and `git`
+Make sure you have the required prerequisites installed: `base-devel`, `git` and `neovim`:
+
+`sudo pacman -S base-devel git neovim`
 
 Clone the AUR repo: 
 
