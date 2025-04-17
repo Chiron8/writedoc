@@ -1,1 +1,1 @@
-/home/chiron/Documents/School
+$HOME/Documents/School

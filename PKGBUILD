@@ -3,7 +3,7 @@
 # POSIX compliant!
 pkgname=writedoc
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast way of creating and editing notes using neovim without defining a file path"
 arch=('any')
 url="https://github.com/Chiron8/writedoc"
