@@ -3,13 +3,13 @@
 # POSIX compliant!
 pkgname=writedoc
 pkgver=2.0
-pkgrel=3
+pkgrel=5
 pkgdesc="A fast way of creating and editing notes using neovim without defining a file path"
 arch=('any')
 url="https://github.com/Chiron8/writedoc"
 license=('MIT')
-depends=('nvim' 'bash')
-source=("$pkgname" "directory.txt" "ft.txt" "writedoc.1" "README.md")
+depends=('nvim' 'sh')
+source=("$pkgname" "directory.txt" "ft.txt" "writedoc.1" "README.md", "LICENSE")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
@@ -18,4 +18,5 @@ package() {
     install -Dm644 "$srcdir/ft.txt" "$pkgdir/usr/share/$pkgname/ft.txt"
     install -Dm644 "$srcdir/writedoc.1" "$pkgdir/usr/share/man/man1/writedoc.1"
     install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/$pkgname/README.md"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
