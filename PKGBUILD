@@ -9,8 +9,8 @@ arch=('any')
 url="https://github.com/Chiron8/writedoc"
 license=('MIT')
 depends=('nvim' 'sh')
-source=("$pkgname" "directory.txt" "ft.txt" "writedoc.1" "README.md", "LICENSE")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=("$pkgname" "directory.txt" "ft.txt" "writedoc.1" "README.md" "LICENSE")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     install -Dm755 "$srcdir/writedoc" "$pkgdir/usr/bin/writedoc"
