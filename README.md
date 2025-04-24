@@ -64,5 +64,5 @@ cd writedoc`
 Build the package: `makepkg -si`
 
 > [!WARNING]
-> This is very much a work in progress and many more improvements are to come!
+> This is very much a work in progress, many more improvements (and breaking changes) are to come!
 
