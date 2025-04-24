@@ -63,6 +63,6 @@ cd writedoc`
 
 Build the package: `makepkg -si`
 
-> [!HELP]
+> [!WARN]
 > This is very much a work in progress and many more improvements are to come!
 
