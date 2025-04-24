@@ -1,6 +1,10 @@
 # writedoc
 A simple POSIX compliant package to make it easier and faster to create markdown files.
 
+> [!NOTE]
+> Installing the package does not currrently work as I'm trying to update the PKGBUILD to pull from GitHub not the AUR for a more unified experience
+> Stay tuned!
+
 ## Usage
 `writedoc <options> <filename>`
 
