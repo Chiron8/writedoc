@@ -58,8 +58,9 @@ Make sure you have the required prerequisites installed: `base-devel`, `git` and
 
 Clone the AUR repo: 
 
-`git clone https://aur.archlinux.org/cgit/aur.git/d/plain/?h=writedoc
-cd writedoc`
+`git clone https://github.com/Chiron8/writedoc`
+
+`cd writedoc`
 
 Build the package: `makepkg -si`
 
