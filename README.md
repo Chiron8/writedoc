@@ -64,7 +64,7 @@ Any other systems:
 
 ```
 chmod +x install.sh
-install.sh
+./install.sh
 ```
 
 > [!WARNING]
