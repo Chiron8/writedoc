@@ -1,7 +1,7 @@
 # writedoc
 A simple POSIX compliant package to make it easier and faster to create markdown files.
 
-> [!WARN]
+> [!WARNING]
 > writedoc is still availiable in the AUR, however it is very out of date and the PKGBUILD is brocken :(
 > Is it strongly recommended to install it manually
 
