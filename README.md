@@ -52,15 +52,14 @@ You can use your preferred AUR helper to intall writedoc:
 `yay -S writedoc`
 
 ### Manual Install
-Make sure you have the required prerequisites installed: `base-devel`, `git` and `neovim`:
-
-`sudo pacman -S base-devel git neovim`
+Make sure you have the required prerequisites installed: `base-devel`, `git` and `neovim`
 
 Clone the AUR repo: 
 
-`git clone https://github.com/Chiron8/writedoc`
-
-`cd writedoc`
+```
+git clone https://github.com/Chiron8/writedoc
+cd writedoc
+```
 
 #### Build the package:
 
@@ -68,7 +67,10 @@ Arch (or other systems with makepkg):
 `makepkg -si`
 
 Any other systems:
-`sudo install -Dm755 writedoc /usr/local/bin/writedoc`
+
+```
+
+```
 
 > [!WARNING]
 > This is very much a work in progress, many more improvements (and breaking changes) are to come!
