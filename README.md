@@ -1,9 +1,9 @@
 # writedoc
 A simple POSIX compliant package to make it easier and faster to create markdown files.
 
-> [!NOTE]
-> Installing the package using the AUR does not currrently work as I'm trying to update the PKGBUILD to pull from GitHub not the AUR for a more unified experience
-> Stay tuned!
+> [!WARN]
+> writedoc is still availiable in the AUR, however it is very out of date and the PKGBUILD is brocken :(
+> Is it strongly recommended to install it manually
 
 ## Usage
 `writedoc <options> <filename>`
@@ -44,12 +44,6 @@ If I wanted to created a file called `work` in the default directory plus a fold
 
 
 ## Installation
-### Automatic Install
-writedoc is availiable on the AUR (Arch Linux User Repository)
-
-You can use your preferred AUR helper to intall writedoc:
-
-`yay -S writedoc`
 
 ### Manual Install
 Make sure you have the required prerequisites installed: `base-devel`, `git` and `neovim`
@@ -69,7 +63,8 @@ Arch (or other systems with makepkg):
 Any other systems:
 
 ```
-
+chmod +x install.sh
+install.sh
 ```
 
 > [!WARNING]
