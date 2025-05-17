@@ -62,8 +62,14 @@ Clone the AUR repo:
 
 `cd writedoc`
 
-Build the package: `makepkg -si`
+#### Build the package:
 
-> [!WARNING]
+Arch (or other systems with makepkg):
+`makepkg -si`
+
+Any other systems:
+`sudo install -Dm755 writedoc /usr/local/bin/writedoc`
+
+[!WARNING]
 > This is very much a work in progress, many more improvements (and breaking changes) are to come!
 
