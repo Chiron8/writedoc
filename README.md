@@ -48,7 +48,7 @@ If I wanted to created a file called `work` in the default directory plus a fold
 ### Manual Install
 Make sure you have the required prerequisites installed: `base-devel`, `git` and `neovim`
 
-Clone the AUR repo: 
+Clone the Github repo: 
 
 ```
 git clone https://github.com/Chiron8/writedoc
