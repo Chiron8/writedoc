@@ -9,6 +9,6 @@ echo "Installing man page to /usr/local/share/man/man1..."
 install -Dm644 writedoc.1 /usr/local/share/man/man1/writedoc.1
 
 echo "Updating man database..."
-mandb || true  # Avoid fail if mandb is not available
+# mandb || true  # Uncomment this if man page can't be found
 
 echo "Finished installing! "
