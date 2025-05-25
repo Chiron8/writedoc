@@ -7,6 +7,7 @@ usage() {
 Usage: writedoc [options] FILENAME
 
   OPTIONS:
+  -h          Display help information
   -c          Change the default values of directory and/or file type
               use with either -d or -t to change the defaults
               FILENAME is not required and will be ignored
@@ -46,7 +47,7 @@ do
 done < "$ftInput"
 
 # Parse flags with getopts
-while getopts ":cp:rd:t:" OPTION; do
+while getopts ":cp:rd:t:h" OPTION; do
     case "$OPTION" in
         c) # Change defaults flag
             CHANGE=1
@@ -76,6 +77,9 @@ while getopts ":cp:rd:t:" OPTION; do
             ;;
         :)  # Handle missing arguments
             echo "Error: Option -$OPTARG requires an argument." >&2
+            usage
+            ;;
+        h) # Help
             usage
             ;;
         \?) # Handle invalid options
@@ -109,8 +113,10 @@ DIRECTORY="${DIRECTORY%/}/"
 FILEPATH="$DIRECTORY$FILENAME$FILETYPE"
 
 # Create the markdown file with a simple title as content
-echo "Creating file at: $FILEPATH"
-echo "# $FILENAME" > "$FILEPATH"
+if ! test -f $FILEPATH; then
+    echo "Creating file at: $FILEPATH"
+    echo "# $FILENAME" > "$FILEPATH"
+fi
 
 # Open the file in Neovim
 echo "Opening file with Neovim..."
