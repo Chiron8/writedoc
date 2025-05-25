@@ -2,8 +2,9 @@
 A simple POSIX compliant package to make it easier and faster to create markdown files.
 
 > [!WARNING]
-> writedoc is still availiable in the AUR, however it is very out of date and the PKGBUILD is brocken :(
-> Is it strongly recommended to install it manually
+> writedoc is still availiable in the AUR, however it is very out of date and the PKGBUILD is broken :(
+> Is it strongly recommended to install it manually.
+> I'm hoping to fix it soon but I'm no longer using arch so this may be a while
 
 ## Usage
 `writedoc <options> <filename>`
@@ -26,7 +27,7 @@ If I were to create a file called `work` in the default directory with the defau
 
 `writedoc work`
 
-If I wanted to create a file called `work` with the directory `~/ImportantFiles/` with the file type`.csv`, the resulting command would be:
+If I wanted to create a file called `work` with the directory `~/ImportantFiles/` with the file type `.csv`, the resulting command would be:
 
 `writedoc -d ~/ImportantFiles -t .csv work`
 
@@ -63,7 +64,6 @@ Arch (or other systems with makepkg):
 Any other systems:
 
 ```
-chmod +x install.sh
 ./install.sh
 ```
 
