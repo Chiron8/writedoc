@@ -1,10 +1,14 @@
 #!/bin/sh
 
-echo "Installing writedoc..."
+set -e
 
-sudo mkdir /usr/share/writedoc/
+echo "Installing writedoc to /usr/local/bin..."
+install -Dm755 writedoc /usr/local/bin/writedoc
 
-sudo cp directory.txt /usr/share/writedoc/
-sudo cp ft.txt /usr/share/writedoc/
+echo "Installing man page to /usr/local/share/man/man1..."
+install -Dm644 writedoc.1 /usr/local/share/man/man1/writedoc.1
 
-echo "Finished installing :)"
+echo "Updating man database..."
+mandb || true  # Avoid fail if mandb is not available
+
+echo "Finished installing! "
