@@ -2,9 +2,7 @@
 A simple POSIX compliant package to make it easier and faster to create markdown files.
 
 > [!WARNING]
-> writedoc is still availiable in the AUR, however it is very out of date and the PKGBUILD is broken :(
-> Is it strongly recommended to install it manually.
-> I'm hoping to fix it soon but I'm no longer using arch so this may be a while
+> writedoc is no longer availiable in the AUR
 
 ## Usage
 `writedoc <options> <filename>`
