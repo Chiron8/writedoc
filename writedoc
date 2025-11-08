@@ -32,9 +32,7 @@ PFLAG=0
 # Get directory and file type
 DATA_DIR="/usr/share/writedoc"
 
-
 dirInput="$DATA_DIR/directory.txt"
-
 while IFS= read -r line
 do
     DIRECTORY="$line"
@@ -46,8 +44,14 @@ do
     FILETYPE="$line"
 done < "$ftInput"
 
+edInput="$DATA_DIR/editor.txt"
+while IFS= read -r line
+do
+    EDITOR="$line"
+done < "$edInput"
+
 # Parse flags with getopts
-while getopts ":cp:rd:t:h" OPTION; do
+while getopts ":cp:rd:t:e:h" OPTION; do
     case "$OPTION" in
         c) # Change defaults flag
             CHANGE=1
@@ -72,6 +76,13 @@ while getopts ":cp:rd:t:h" OPTION; do
             FILETYPE="$OPTARG"
             if [ $CHANGE -eq 1 ]; then
                 echo "$FILETYPE" > "$ftInput"
+                exit 0
+            fi
+            ;;
+        e) # Editor
+            EDITOR="$OPTARG"
+            if [ $CHANGE -eq 1 ]; then
+                echo "$EDITOR" > "$edInput"
                 exit 0
             fi
             ;;
@@ -106,6 +117,13 @@ if [ ! -d "$DIRECTORY" ]; then
     mkdir -p "$DIRECTORY"
 fi
 
+# Make sure command (editor) exists
+if command -v mycommand >/dev/null 2>&1; then
+    echo "Editor $EDITOR does not exist!"
+    usage
+fi
+
+
 # Ensure DIRECTORY ends with a slash
 DIRECTORY="${DIRECTORY%/}/"
 
@@ -120,4 +138,4 @@ fi
 
 # Open the file in Neovim
 echo "Opening file with Neovim..."
-nvim "$FILEPATH"
+$EDITOR "$FILEPATH"
