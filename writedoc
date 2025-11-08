@@ -9,7 +9,7 @@ Usage: writedoc [options] FILENAME
   OPTIONS:
   -h          Display help information
   -c          Change the default values of directory and/or file type
-              use with either -d or -t to change the defaults
+              use with either -d, -t or -e to change the defaults
               FILENAME is not required and will be ignored
   -p          Use another folder in the default directory
               e.g. writedoc -p ExampleFolder ExampleFile =
@@ -18,6 +18,8 @@ Usage: writedoc [options] FILENAME
   -r          Reset all values back to the default setting
 
   -d          Directory where the file will be created (default: ./Documents)
+
+  -e          Change what editor to use (default: nvim)
   
   -t          File type of the file (default: .md)
   

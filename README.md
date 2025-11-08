@@ -10,8 +10,9 @@ A simple POSIX compliant package to make it easier and faster to create markdown
 The current options are:
 - -d             Define a custom directory to create the new file
 - -t             Define a custom file type for the new file
+- -e             Define what editor to use
 - -c             Use when you want to change the default value(s) for the directory and/or file type
-                 make sure to use it alongside -d or -t
+                 make sure to use it alongside -d, -t or -e
                  FILENAME is not required when using this flag
 - -r             Reset all values back to their defaults 
                  FILENAME is not required when using this flag
