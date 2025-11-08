@@ -139,5 +139,5 @@ if ! test -f $FILEPATH; then
 fi
 
 # Open the file in Neovim
-echo "Opening file with Neovim..."
+echo "Opening file with $EDITOR..."
 $EDITOR "$FILEPATH"
