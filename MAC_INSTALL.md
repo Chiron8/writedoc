@@ -55,52 +55,5 @@ If you encounter permission issues, run:
 sudo ./install.sh
 ```
 
-## Verify Installation
-
-After installation, verify that writedoc is properly installed:
-
-```bash
-writedoc -h
-```
-
-You should see the help message with usage information.
-
-To view the man page:
-
-```bash
-man writedoc
-```
-
-## Usage
-
-For detailed usage instructions, please refer to the main [README.md](README.md) file.
-
-## Troubleshooting
-
-### Permission Denied Error
-If you get a "Permission denied" error when running the install script, make sure it's executable:
-
-```bash
-chmod +x install.sh
-```
-
-### Command Not Found
-If `writedoc` is not found after installation, try restarting your terminal or adding `/usr/local/bin` to your PATH:
-
-```bash
-export PATH="/usr/local/bin:$PATH"
-```
-
-To make this permanent, add the above line to your `~/.zshrc` (for zsh) or `~/.bash_profile` (for bash).
-
-## Uninstallation
-
-To uninstall writedoc from your Mac:
-
-```bash
-sudo rm /usr/local/bin/writedoc
-sudo rm /usr/local/share/man/man1/writedoc.1
-```
-
 > [!WARNING]
 > writedoc is very much a work in progress, many more improvements (and breaking changes) are to come!
