@@ -38,7 +38,7 @@ git clone https://github.com/Chiron8/writedoc
 cd writedoc
 ```
 
-#### Build the package:
+#### Install the package:
 
 Run the installation script:
 
