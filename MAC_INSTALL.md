@@ -1,6 +1,7 @@
 # writedoc - Mac Installation Guide
 
-> [!WARN] I don't own a mac so this is likely to be incorrect
+> [!WARN]
+> I don't own a mac so this is likely to be incorrect
 
 ## Prerequisites
 
