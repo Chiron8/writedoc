@@ -1,6 +1,6 @@
 # writedoc - Mac Installation Guide
 
-This guide provides detailed installation instructions for macOS users.
+![WARN](I don't own a mac so this is likely to be incorrect)
 
 ## Prerequisites
 
