@@ -45,6 +45,8 @@ If I wanted to created a file called `work` in the default directory plus a fold
 
 ## Installation
 
+Find mac installation instructions [here](https://github.com/Chiron8/writedoc/blob/master/MAC_INSTALL.md)
+
 ### Manual Install
 Make sure you have the required prerequisites installed: `base-devel`, `git` and `neovim`
 
