@@ -52,19 +52,17 @@ Make sure you have the required prerequisites installed: `base-devel`, `git` and
 
 Clone the Github repo: 
 
-```
+```bash
 git clone https://github.com/Chiron8/writedoc
 cd writedoc
 ```
 
 #### Build the package:
+```bash
+# Arch (or other systems with makepkg):
+makepkg -si
 
-Arch (or other systems with makepkg):
-`makepkg -si`
-
-Any other systems:
-
-```
+# Any other system
 ./install.sh
 ```
 
