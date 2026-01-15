@@ -59,9 +59,6 @@ cd writedoc
 
 #### Build the package:
 ```bash
-# Arch (or other systems with makepkg):
-makepkg -si
-
 # Any other system
 ./install.sh
 ```
