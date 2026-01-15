@@ -135,7 +135,9 @@ FILEPATH="$DIRECTORY$FILENAME$FILETYPE"
 # Create the markdown file with a simple title as content
 if ! test -f $FILEPATH; then
     echo "Creating file at: $FILEPATH"
-    echo "# $FILENAME" > "$FILEPATH"
+    if [ $FILETYPE = ".md" ]; then
+        echo "# $FILENAME" > "$FILEPATH"
+    fi
 fi
 
 # Open the file in Neovim
