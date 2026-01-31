@@ -34,23 +34,35 @@ PFLAG=0
 # Get directory and file type
 DATA_DIR="/usr/share/writedoc"
 
-dirInput="$DATA_DIR/directory.txt"
-while IFS= read -r line
-do
-    DIRECTORY="$line"
-done < "$dirInput"
 
-ftInput="$DATA_DIR/ft.txt"
-while IFS= read -r line
-do
-    FILETYPE="$line"
-done < "$ftInput"
+config() {
+    val=$(grep -E "^$1=" /home/$USER/.config/writedoc/writedoc.conf 2>/dev/null || echo "$1=__DEFAULT__" | head -n 1 | cut -d '=' -f 2-)
 
-edInput="$DATA_DIR/editor.txt"
-while IFS= read -r line
-do
-    EDITOR="$line"
-done < "$edInput"
+    if [[ $val == __DEFAULT__ ]]
+    then
+        case $1 in
+            editor)
+                echo -n "root"
+                ;;
+            password)
+                echo -n ""
+                ;;
+            hostname)
+                echo -n "localhost"
+                ;;
+        esac
+    else
+        echo -n $val
+    fi
+}
+
+echo $(config username) # should be loaded from defaults
+echo $(config password) # should be loaded from config file
+echo $(config hostname) # includes the "injected" code, but it's fine here
+echo $(config PROMPT_COMMAND) # also respects variables that you may not have
+               # been looking for, but they're sandboxed inside the $config array
+
+
 
 # Parse flags with getopts
 while getopts ":cp:rd:t:e:h" OPTION; do
@@ -121,7 +133,7 @@ fi
 
 # Make sure command (editor) exists
 if command -v mycommand >/dev/null 2>&1; then
-    echo "Editor $EDITOR does not exist!"
+    echo "Editor $EDITOR does not exist!" >&2
     usage
 fi
 
@@ -135,7 +147,7 @@ FILEPATH="$DIRECTORY$FILENAME$FILETYPE"
 # Create the markdown file with a simple title as content
 if ! test -f $FILEPATH; then
     echo "Creating file at: $FILEPATH"
-    if [ $FILETYPE = ".md" ]; then
+    if [ $FILETYPE -eq ".md" ]; then
         echo "# $FILENAME" > "$FILEPATH"
     fi
 fi
